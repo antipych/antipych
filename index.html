@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -29,14 +29,15 @@
         </div>
     </div>
     <br />
-    <br/>
+    <br />
 
     <div class="container body-content">
 
-        <h1>Hello !</h1>
+        <div class="article">
+            <h1>Hello !</h1>
 
-        <p>Simple test :)</p>
-
+            <p>Simple test :)</p>
+        </div>
         <hr />
         <footer>
             <p>&copy; 2015 - Antipych</p>
@@ -49,6 +50,14 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $.get("posts/index.md", function (data) {
+                $(".article").html(data);
+            });
+        })
+    </script>
 </body>
 </html>
 
