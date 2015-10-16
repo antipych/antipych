@@ -34,9 +34,6 @@
     <div class="container body-content">
 
         <div class="article">
-            <h1>Hello !</h1>
-
-            <p>Simple test :)</p>
         </div>
         <hr />
         <footer>
@@ -51,10 +48,17 @@
     <!-- Latest compiled JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+    <script src="lib/commonmark.js"></script>
+
     <script>
         $(document).ready(function () {
             $.get("posts/index.md", function (data) {
-                $(".article").html(data);
+                var reader = new commonmark.Parser();
+                var writer = new commonmark.HtmlRenderer();
+                var parsed = reader.parse(data); // parsed is a 'Node' tree
+                // transform parsed if you like...
+                var result = writer.render(parsed); // result is a String
+                $(".article").html(result);
             });
         })
     </script>
